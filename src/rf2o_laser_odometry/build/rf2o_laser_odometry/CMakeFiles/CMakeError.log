@@ -1,0 +1,61 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-4Vt5bo
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_a51f7/fast && /usr/bin/make  -f CMakeFiles/cmTC_a51f7.dir/build.make CMakeFiles/cmTC_a51f7.dir/build
+make[1]: Entering directory '/home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-4Vt5bo'
+Building C object CMakeFiles/cmTC_a51f7.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_a51f7.dir/src.c.o -c /home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-4Vt5bo/src.c
+Linking C executable cmTC_a51f7
+/home/jisu/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a51f7.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_a51f7.dir/src.c.o -o cmTC_a51f7 
+/usr/bin/ld: CMakeFiles/cmTC_a51f7.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_a51f7.dir/build.make:99: cmTC_a51f7] Error 1
+make[1]: Leaving directory '/home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-4Vt5bo'
+make: *** [Makefile:127: cmTC_a51f7/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-mMeueo
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e9981/fast && /usr/bin/make  -f CMakeFiles/cmTC_e9981.dir/build.make CMakeFiles/cmTC_e9981.dir/build
+make[1]: Entering directory '/home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-mMeueo'
+Building C object CMakeFiles/cmTC_e9981.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_e9981.dir/CheckFunctionExists.c.o -c /home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-mMeueo/CheckFunctionExists.c
+Linking C executable cmTC_e9981
+/home/jisu/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9981.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_e9981.dir/CheckFunctionExists.c.o -o cmTC_e9981  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_e9981.dir/build.make:99: cmTC_e9981] Error 1
+make[1]: Leaving directory '/home/jisu/robotyou_ws/src/rf2o_laser_odometry/build/rf2o_laser_odometry/CMakeFiles/CMakeScratch/TryCompile-mMeueo'
+make: *** [Makefile:127: cmTC_e9981/fast] Error 2
+
+
+
